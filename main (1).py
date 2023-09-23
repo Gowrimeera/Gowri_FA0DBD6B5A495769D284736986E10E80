@@ -1,43 +1,25 @@
-class Player(object):
-    def __init__(self, name, age, skills, style=None):
+def sort_students(student_list):
+    # Sort the list of student objects by CGPA in descending order
+    sorted_students = sorted(student_list, key=lambda x: x.cgpa, reverse=True)
+    return sorted_students
+
+# Define a student class
+class Student:
+    def __init__(self, name, roll_number, cgpa):
         self.name = name
-        self.age = age
-        self.skills = skills
-        self.style = style
+        self.roll_number = roll_number
+        self.cgpa = cgpa
 
-    def get_player(self):
-        print(self.name,self.age,self.skills,self.style)
+# Test the function with a list of student objects
+students = [
+    Student("Alice", "A123", 3.8),
+    Student("Bob", "B456", 3.5),
+    Student("Charlie", "C789", 3.9),
+    Student("David", "D234", 3.7),
+]
 
+sorted_students = sort_students(students)
 
-class Team(object):
-    def __init__(self, name):
-        self.name = name
-        self._players = []
-
-    def add_player(self, obj):
-        if isinstance(obj, Player):
-            self._players.append(obj)
-        else:
-            print("Please provide player object")
-
-    def get_players(self):
-        for player in self._players:
-            player.get_player()
-
-
-if __name__ == "__main__":
-
-    p1 = Player("Mahendra", 46, "Wicket Kipper", "Right-Hand Batsman")
-    p2 = Player("Sachin", 35, "Batsman", "Right-Hand Batsman")
-    p3 = Player("Saurabh", 44, "Batsman", "Left-Hand Batsman")
-    p4 = Player("Zahir", 38, "Bauwller", "Medium Pace Bauwller")
-    p5 = Player("Yuvraj", 43, "All rounder")
-
-    t = Team("India")
-    t.add_player(p1)
-    t.add_player(p2)
-    t.add_player(p3)
-    t.add_player(p4)
-    t.add_player(p5)
-
-    t.get_players()
+# Print the sorted list of students
+for student in sorted_students:
+    print(f"Name: {student.name}, Roll Number: {student.roll_number}, CGPA: {student.cgpa}")
